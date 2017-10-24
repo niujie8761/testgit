@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/backend/web/css/365baseAdmin.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/css/boxy.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/public/boxy-ne.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/public/boxy-nw.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/public/boxy-se.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/public/boxy-sw.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/public/wutu.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/sprite_dialog.gif" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/backend/web/images/sprite_icon.png" charset="GBK" />
+  </component>
+</project>
