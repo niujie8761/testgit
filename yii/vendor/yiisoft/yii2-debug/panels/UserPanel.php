@@ -22,6 +22,7 @@ use yii\filters\AccessControl;
 use yii\filters\AccessRule;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
+use yii\web\IdentityInterface;
 
 /**
  * Debugger panel that collects and displays user data.
@@ -85,8 +86,7 @@ class UserPanel extends Panel
         ) {
             $this->filterModel = new $this->filterModel;
         } elseif (Yii::$app->user && Yii::$app->user->identityClass) {
-            $identityImplement = new Yii::$app->user->identityClass();
-            if ($identityImplement instanceof ActiveRecord) {
+            if (is_subclass_of(Yii::$app->user->identityClass, ActiveRecord::className())) {
                 $this->filterModel = new \yii\debug\models\search\User();
             }
         }
@@ -150,6 +150,10 @@ class UserPanel extends Panel
      */
     public function canSwitchUser()
     {
+        if (Yii::$app->user->isGuest) {
+            return false;
+        }
+
         $allowSwitchUser = false;
 
         $rule = new AccessRule($this->ruleUserSwitch);
@@ -259,6 +263,7 @@ class UserPanel extends Panel
         }
 
         return [
+            'id' => $identity->getId(),
             'identity' => $identityData,
             'attributes' => $attributes,
             'rolesProvider' => $rolesProvider,
@@ -297,7 +302,7 @@ class UserPanel extends Panel
     /**
      * Returns the array that should be set on [[\yii\widgets\DetailView::model]]
      *
-     * @param mixed $identity
+     * @param IdentityInterface $identity
      * @return array
      */
     protected function identityData($identity)

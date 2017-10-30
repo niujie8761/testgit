@@ -1,6 +1,20 @@
 Yii Framework 2 debug extension Change Log
 ==========================================
 
+2.0.12 October 09, 2017
+-----------------------
+
+- Bug #271: Fixed regression in 2.0.11 causing debug fail with some custom classes implementing IdentityInterface (zertex)
+- Bug #279: Fixed incomplete initialization of path aliases while using non-web application (samdark)
+
+
+2.0.11 September 06, 2017
+------------------------
+
+- Bug #262: Fixed issue when identity ID is stored in a field different from `id` (samdark)
+- Bug #265: Fixed calling `isMainUser()` on null regression in 2.0.10 (samdark)
+
+
 2.0.10 September 04, 2017
 -------------------------
 

@@ -84,7 +84,7 @@ class IndexController   extends BaseController
         return $this->render('menus', [
             'menus' => $menus
         ]);
-    }
+     }
 
     /**
      * @return string
