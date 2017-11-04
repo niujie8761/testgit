@@ -29,10 +29,10 @@ class JpushController extends BaseController{
     {
         $content = "开发商确认可以安排带看";
         //消息的内容
-       // $content = iconv('GBK', 'UTF-8',$content);
+        $content = iconv('GBK', 'UTF-8',$content);
 
         //消息的默认标题
-       // $title = iconv('GBK', 'UTF-8','房管家经纪人');
+        $title = iconv('GBK', 'UTF-8','房管家经纪人');
 
         $extra = array('type' => 2);
 
