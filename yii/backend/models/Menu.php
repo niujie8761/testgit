@@ -28,4 +28,19 @@ class Menu extends yii\db\ActiveRecord {
         $model->kamu_as_menu = $data['kamu_as_menu'];
         return $model->insert();
     }
+
+    public static function saveData($data) {
+        $model = new self();
+        $model->kamu_id = $data['kamu_id'];
+        $model->kamu_name = $data['kamu_name'];
+        $model->kamu_url = $data['kamu_url'];
+        $model->kamu_as_menu = $data['kamu_as_menu'];
+        $model->position = $data['position'];
+        $count = $model->update();
+        if($count > 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
