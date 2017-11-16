@@ -39,11 +39,15 @@ class MenuController extends BaseController{
         );
     }
 
-    public function actionSave()
+    public function actionAdd()
     {
         $data = Yii::$app->request->post();
-        $data = tools::array_iconv($data, 'utf-8', 'gbk');
-        $result = menu::addData($data);
+        if($data['kamu_id']) {
+            $result = menu::saveData($data);
+            echo $result;exit;
+        }else {
+            $result = menu::addData($data);
+        }
         if($result) {
             $sql = "select * from keeper_menu where isdel=0 order by position desc";
             $menu = Menu::findBySql($sql)->asArray()->all();
@@ -51,7 +55,17 @@ class MenuController extends BaseController{
             Yii::$app->redis->set('menus', serialize($menu));
             $this->redirect(['/menu/admin']);
         }
+    }
 
+    public function actionSave()
+    {
+        if(Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+            $sql = "select * from keeper_menu where kamu_id =".$data['kamu_id'];
+            $menu = Menu::findBySql($sql)->asArray()->all();
+            $menu = tools::array_iconv($menu, 'gbk', 'utf-8');
+            echo json_encode($menu[0]);
+        }
     }
 
 
