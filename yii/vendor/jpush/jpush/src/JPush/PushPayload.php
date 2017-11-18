@@ -110,6 +110,7 @@ class PushPayload {
         return $this->updateAudience('abtests', $abtest, 'abtest');
     }
 
+
     private function updateAudience($key, $value, $name) {
         if (is_null($this->$key)) {
             $this->$key = array();
